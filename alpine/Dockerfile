@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-alpine as flyway
+FROM eclipse-temurin:8-jre-alpine AS flyway
 
 RUN apk --no-cache add --update bash openssl
 RUN apk --no-cache add --update python3 py3-pip \
@@ -21,6 +21,6 @@ ENV PATH="/flyway:${PATH}"
 ENTRYPOINT ["flyway"]
 CMD ["-?"]
 
-FROM flyway as redgate
+FROM flyway AS redgate
 
 RUN apk --no-cache add --update dotnet6-runtime
